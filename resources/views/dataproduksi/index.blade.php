@@ -73,7 +73,7 @@
                                 @foreach ($dataproduksi as $dp)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $dp->stokbibit->stok_bibit }}</td>
+                                        <td>{{ $dp->getstok->stok_bibit }}</td>
                                         <td>{{ $dp->hasil_produksi }}</td>
                                         <td>
                                             <a type="button" data-bs-toggle="modal"
@@ -106,30 +106,22 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="form-group">
-                                                            <input type="text" name="stok_bibit" class="form-control"
-                                                                placeholder="stok bibit" value="{{ $dp->stok_bibit }}">
+                                                            <select name="stok_bibit_id" id="stok_bibit_id"
+                                                                class="form-control" required="true">
+                                                                <option>--Pilih Bibit--</option>
+                                                                @foreach ($stokbibit as $sb)
+                                                                    <option value="{{ $sb->id }}"
+                                                                        {{ $sb->id == $dp->stok_bibit_id ? 'selected' : '' }}>
+                                                                        {{ $sb->stok_bibit }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <input type="date" name="tgl_produksi" class="form-control"
-                                                                value="{{ $dp->tgl_produksi }}">
-                                                        </div>
-
-                                                        {{-- <div class="form-group">
-                                                            <input type="text" name="jml_produksi" class="form-control"
-                                                                placeholder="jumlah produksi"
-                                                                value="{{ $dp->jml_produksi }}">
-                                                        </div> --}}
-
-                                                        <div class="form-group">
-                                                            <input type="text" name="hasil_produksi" class="form-control"
+                                                            <input type="number" name="hasil_produksi" class="form-control"
                                                                 placeholder="hasil produksi"
                                                                 value="{{ $dp->hasil_produksi }}">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <input type="text" name="keterangan" class="form-control"
-                                                                placeholder="keterangan" value="{{ $dp->keterangan }}">
                                                         </div>
 
                                                         <div class="modal-footer">
@@ -163,32 +155,16 @@
                                                     required="true">
                                                     <option>--Pilih Bibit--</option>
                                                     @foreach ($stokbibit as $sb)
-                                                        <option value="{{ $sb->id }}"
-                                                            {{ $sb->id == $sb->stok_bibit_id ? 'selected' : '' }}>
-                                                            {{ $sb->stok_bibit }}
+                                                        <option value="{{ $sb->id }}">{{ $sb->stok_bibit }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
-                                            {{-- <div class="form-group">
-                                                <input type="date" name="tgl_produksi" class="form-control">
-                                            </div> --}}
-
-                                            {{-- <div class="form-group">
-                                                <input type="text" name="jml_produksi" class="form-control"
-                                                    placeholder="jumlah produksi">
-                                            </div> --}}
-
                                             <div class="form-group">
                                                 <input type="number" name="hasil_produksi" class="form-control"
                                                     placeholder="hasil produksi">
                                             </div>
-
-                                            {{-- <div class="form-group">
-                                                <input type="text" name="keterangan" class="form-control"
-                                                    placeholder="keterangan">
-                                            </div> --}}
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary"

@@ -44,19 +44,23 @@ class StokBibitController extends Controller
     public function update(Request $request, $id)
     {
         $validasi = [
-            'quantity' => 'required',
+            'stok_bibit' => 'required',
+            'tgl_produksi' => 'required',
+            'keterangan' => 'required',
         ];
-        if ($request->stok_bibit_id) {
-            $validasi["stok_bibit_id"] = 'required';
+        if ($request->harga) {
+            $validasi["harga"] = 'required';
         }
         $request->validate($validasi);
 
         try {
             $data = [
-                'quantity' => $request->quantity,
+                'stok_bibit' => $request->stok_bibit,
+                'tgl_produksi' => $request->tgl_produksi,
+                'keterangan' => $request->keterangan,
             ];
-            if ($request->stok_bibit_id) {
-                $data["stok_bibit_id"] = ($request->stok_bibit_id);
+            if ($request->harga) {
+                $data["harga"] = ($request->harga);
             }
             StokBibitModel::where('id', $id)->update($data);
             return redirect()->route('stokbibit.index')->with('success', 'Data berhasil diubah');

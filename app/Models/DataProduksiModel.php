@@ -11,7 +11,7 @@ class DataProduksiModel extends Model
     protected $table = 'data_produksi';
     protected $guarded = ['id'];
 
-    public function stokbibit()
+    public function getstok()
     {
         return $this->belongsTo(StokBibitModel::class, 'stok_bibit_id');
     }

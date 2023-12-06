@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0 mt-2">DATA PRODUKSI</h4>
+                        <h4 class="card-title mg-b-0 mt-2">DATA STOK</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                 </div>
@@ -32,17 +32,51 @@
                                     <th class="">Stok Bibit</th>
                                     <th class="">Tanggal produksi</th>
                                     <th class="">hasil produksi</th>
+                                    <th class="">harga</th>
                                     <th class="">keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($stok as $s)
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $s->stok_bibit }}</td>
+                                        <td>{{ date('m-d-Y', strtotime($s->tgl_produksi)) }}</td>
+                                        <td>{{ $s->quantity }}</td>
+                                        <td>{{ $s->harga }}</td>
+                                        <td>{{ $s->keterangan }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0 mt-2">DATA STOK</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-md-nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="wd-1p border-bottom-0">Id</th>
+                                    <th class="">Stok Bibit</th>
+                                    <th class="">hasil produksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($dataproduksi as $dp)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $dp->stok_bibit }}</td>
-                                        <td>{{ date('m-d-Y', strtotime($dp->tgl_produksi)) }}</td>
+                                        <td>{{ $dp->getstok->stok_bibit }}</td>
                                         <td>{{ $dp->hasil_produksi }}</td>
-                                        <td>{{ $dp->keterangan }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -82,7 +116,7 @@
                                     <tr>
                                         <th scope="row">{{ $item + $kelolapemesanan->firstItem() }}</th>
                                         <td>{{ $kp->user->username }}</td>
-                                        <td>{{ $kp->dataproduksi->stok_bibit }}</td>
+                                        <td>{{ $kp->stok->stok_bibit }}</td>
                                         <td>{{ $kp->jumlah_pemesanan }}</td>
                                         <td>{{ $kp->alamat }}</td>
                                         <td>{{ $kp->no_hp }}</td>

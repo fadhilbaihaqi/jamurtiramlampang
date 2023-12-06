@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Data Stok')
+@section('title', 'Stok bibit')
 @section('content')
 
     <!-- /breadcrumb -->
@@ -7,7 +7,7 @@
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Data Stok</li>
+                    <li class="breadcrumb-item">Stok Bibit</li>
                 </ol>
             </nav>
         </div>
@@ -50,7 +50,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0 mt-2">DATA STOK</h4>
+                        <h4 class="card-title mg-b-0 mt-2">STOK BIBIT</h4>
                         {{-- awal button modal --}}
                         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
                             data-bs-target="#exampleModal" data-bs-whatever="@mdo">Tambah Data</button>
@@ -65,7 +65,7 @@
                                 <tr>
                                     <th class="wd-1p border-bottom-0">Id</th>
                                     <th class="wd-15p border-bottom-0">Nama Bibit</th>
-                                    <th class="wd-25p border-bottom-0">tgl produksi</th>
+                                    <th class="wd-15p border-bottom-0">tgl produksi</th>
                                     <th class="wd-15p border-bottom-0">quantity</th>
                                     <th class="wd-15p border-bottom-0">Harga</th>
                                     <th class="wd-15p border-bottom-0">keterangan</th>
@@ -77,7 +77,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $stb->stok_bibit }}</td>
-                                        <td>{{ $stb->tgl_produksi }}</td>
+                                        <td>{{ date('m-d-Y', strtotime($stb->tgl_produksi)) }}</td>
                                         <td>{{ $stb->quantity }}</td>
                                         <td>Rp. {{ number_format($stb->harga) }}</td>
                                         <td>{{ $stb->keterangan }}</td>
@@ -98,7 +98,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Stok
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Stok Bibit
                                                     </h1>
                                                 </div>
                                                 <div class="modal-body">
@@ -156,7 +156,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Stok</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Stok Bibit</h1>
                                     </div>
                                     <div class="modal-body">
                                         <form action="{{ route('stokbibit.store') }}" method="post">

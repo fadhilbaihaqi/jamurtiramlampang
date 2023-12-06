@@ -62,12 +62,14 @@
                         <table class="table text-md-nowrap">
                             <thead>
                                 <tr>
-                                    <th class="wd-1p border-bottom-0">Id</th>
+                                    <th class="border-bottom-0">Id</th>
                                     <th class="border-bottom-0">Nama Pemesan</th>
                                     <th class="border-bottom-0">Nama Bibit</th>
+                                    <th class="border-bottom-0">harga Bibit</th>
                                     <th class="border-bottom-0">Jumlah Pemesanan</th>
                                     <th class="border-bottom-0">Alamat</th>
                                     <th class="border-bottom-0">no hp</th>
+                                    <th class="border-bottom-0">total bayar</th>
                                     <th class="border-bottom-0">status</th>
                                     <th class="border-bottom-0">upload</th>
                                     <th class="border-bottom-0">Aksi</th>
@@ -81,10 +83,12 @@
                                     <tr>
                                         <th scope="row">{{ $item + $kelolapemesanan->firstItem() }}</th>
                                         <td>{{ $kp->user->username }}</td>
-                                        <td>{{ $kp->dataproduksi->stok_bibit }}</td>
+                                        <td>{{ $kp->stok->stok_bibit }}</td>
+                                        <td>Rp. {{ number_format($kp->stok->harga) }}</td>
                                         <td>{{ $kp->jumlah_pemesanan }}</td>
                                         <td>{{ $kp->alamat }}</td>
                                         <td>{{ $kp->no_hp }}</td>
+                                        <td>Rp. {{ number_format($kp->stok->harga * $kp->jumlah_pemesanan) }}</td>
                                         @if (strtolower(auth()->user()->role->role) == strtolower('konsumen'))
                                             @if ($kp->status == 0)
                                                 <td><button type="button" class="btn btn-sm btn-info"

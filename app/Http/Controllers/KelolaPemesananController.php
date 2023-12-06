@@ -17,7 +17,7 @@ class KelolaPemesananController extends Controller
         } else {
             $kelolapemesanan = KelolaPemesananModel::paginate(5);
         }
-        $stokbibit = DataProduksiModel::all();
+        $stokbibit = StokBibitModel::all();
         return view('kelola_pemesanan.index', compact('kelolapemesanan', 'stokbibit'));
     }
 

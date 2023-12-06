@@ -38,25 +38,19 @@ class DataProduksiController extends Controller
     public function update(Request $request, $id)
     {
         $validasi = [
-            'stok_bibit' => 'required',
-            // 'jml_produksi' => 'required',
             'hasil_produksi' => 'required',
-            'keterangan' => 'required',
         ];
-        if ($request->tgl_produksi) {
-            $validasi["tgl_produksi"] = 'required';
+        if ($request->stok_bibit_id) {
+            $validasi["stok_bibit_id"] = 'required';
         }
         $request->validate($validasi);
 
         try {
             $data = [
-                'stok_bibit' => $request->stok_bibit,
-                // 'jml_produksi' => $request->jml_produksi,
                 'hasil_produksi' => $request->hasil_produksi,
-                'keterangan' => $request->keterangan,
             ];
-            if ($request->tgl_produksi) {
-                $data["tgl_produksi"] = ($request->tgl_produksi);
+            if ($request->stok_bibit_id) {
+                $data["stok_bibit_id"] = ($request->stok_bibit_id);
             }
             DataProduksiModel::where('id', $id)->update($data);
             return redirect()->route('dataproduksi.index')->with('success', 'Data berhasil diubah');

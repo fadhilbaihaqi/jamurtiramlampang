@@ -7,7 +7,7 @@
             <h4 class="content-title mb-2">HALO, SELAMAT DATANG, {{ auth()->user()->username }}!</h4>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Dasboard</li>
+                    <li class="breadcrumb-item">ini Dasboard</li>
                 </ol>
             </nav>
         </div>
