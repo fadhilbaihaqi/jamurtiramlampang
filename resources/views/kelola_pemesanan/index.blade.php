@@ -91,10 +91,12 @@
                                         <td>Rp. {{ number_format($kp->stok->harga * $kp->jumlah_pemesanan) }}</td>
                                         @if (strtolower(auth()->user()->role->role) == strtolower('konsumen'))
                                             @if ($kp->status == 0)
-                                                <td><button type="button" class="btn btn-sm btn-info"
+                                                <td>
+                                                    <button type="button" class="btn btn-sm btn-info"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#uploadTask{{ $kp->id }}">Upload
-                                                        Task</button></td>
+                                                        Bukti Pembayaran</button>
+                                                </td>
                                             @else
                                                 <td><span class="badge bg-success">Selesai</span></td>
                                             @endif
@@ -135,7 +137,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="uploadTask{{ $kp->id }}Label">
-                                                        Upload Task</h1>
+                                                        Upload Bukti Pembayaran</h1>
                                                 </div>
                                                 <form
                                                     action="{{ route('kelolapemesanan.validateTask', ['id' => $kp->id]) }}"
@@ -144,7 +146,7 @@
                                                         @csrf
                                                         <div class="mb-3">
                                                             <label for="upload" class="col-form-label">Upload
-                                                                Task:</label>
+                                                                Bukti Pembayaran:</label>
                                                             <input type="file" class="form-control" id="upload"
                                                                 name="upload" required>
                                                         </div>

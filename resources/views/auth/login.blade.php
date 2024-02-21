@@ -60,10 +60,10 @@
                                         class="fas fa-sign-in-alt"></i></button>
                             </form>
                         </div>
-                        <div class="main-signin-footer mt-3 mg-t-5">
+                        {{-- <div class="main-signin-footer mt-3 mg-t-5">
                             <p><a href="">Forgot password?</a></p>
                             <p>Belum punya akun? <a href="page-signup.html">Registrasi disini</a></p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

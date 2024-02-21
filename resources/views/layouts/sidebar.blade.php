@@ -63,15 +63,15 @@
             @if (strtolower(auth()->user()->role->role) == strtolower('admin') ||
                     strtolower(auth()->user()->role->role) == strtolower('pemilik'))
                 <li class="slide">
+                    <a class="side-menu__item {{ request()->is('laporan') ? 'active' : '' }}" href="laporan"><i
+                            class="side-menu__icon fe fe-shopping-cart"></i><span
+                            class="side-menu__label">Laporan</span></a>
+                </li>
+                <li class="slide">
                     <a class="side-menu__item {{ request()->is('kelolapemasaran') ? 'active' : '' }}"
                         href="kelolapemasaran"><i class="side-menu__icon fe fe-shopping-cart"></i><span
                             class="side-menu__label">Kelola Pemasaran
                         </span></a>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item {{ request()->is('laporan') ? 'active' : '' }}" href="laporan"><i
-                            class="side-menu__icon fe fe-shopping-cart"></i><span
-                            class="side-menu__label">Laporan</span></a>
                 </li>
             @endif
 

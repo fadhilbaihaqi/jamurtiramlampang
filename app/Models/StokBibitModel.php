@@ -11,8 +11,12 @@ class StokBibitModel extends Model
     protected $table = 'stok_bibit';
     protected $guarded = ['id'];
 
-    // public function dataproduksi()
-    // {
-    //     return $this->belongsTo(DataProduksiModel::class, 'stok_bibit_id');
-    // }
+    public function updateStok($jumlah)
+    {
+        // Pastikan $jumlah memiliki tipe data yang sesuai
+        $jumlah = (int) $jumlah;
+
+        $this->stok_bibit += $jumlah;
+        $this->save();
+    }
 }

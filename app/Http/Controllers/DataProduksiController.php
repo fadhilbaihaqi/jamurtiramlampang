@@ -63,6 +63,10 @@ class DataProduksiController extends Controller
     public function destroy($id)
     {
         try {
+            // $produksi = DataProduksiModel::find($id);
+            // $stok = StokBibitModel::find($produksi->stok_bibit_id);
+            // $hitung = $produksi->hasilproduksi + $stok->quantity;
+            // $stok->update(['quantity' => $hitung]);
             DataProduksiModel::destroy($id);
             return redirect()->route('dataproduksi.index')->with('success', 'Data berhasil dihapus');
         } catch (Throwable $e) {
